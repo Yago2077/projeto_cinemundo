@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>CineMundo - Brasil</title>
+  </head>
+  <body>
+    <header>
+      <img id="orders-menu" src="./images/menu_icon_order_ticket.png" />
+      <img src="./images/cinemundo_logo.png" />
+      <div class="topnav">
+        <a class="active" href="#">PROGRAMAÇÃO</a>
+        <a href="#">CINEMAS</a>
+        <a href="#">PROMOÇÕES</a>
+        <a href="#">PREÇOS</a>
+      </div>
+      <div class="search-bar">
+        <img
+          src="./images/search_icon.png"
+          id="search-button"
+          alt="search-button"
+        />
+        <input type="text" placeholder="Pesquisar" />
+      </div>
+    </header>
+    <div id="side-menu">
+      <ul>
+        <li><a href="#">INGRESSOS</a></li>
+        <li><a href="#">CLUB CINEMUNDO</a></li>
+        <li><a href="#">MINHA CONTA</a></li>
+      </ul>
+    </div>
+    <div class="container-slider">
+      <button id="prev-button">
+        <img src="./images/arrow.png" alt="prev-button" />
+      </button>
+      <div class="container-images">
+        <div class="slide-container on">
+          <img
+            src="./images/thunderbolts_poster.png"
+            class="slider"
+            alt="Thunderbolts poster movie"
+          />
+          <div class="rating-box-slide" data-rating="14">14</div>
+          <div class="slide-content">
+            <h2>THUNDERBOLTS*</h2>
+            <button class="buy-button">
+              <span class="btn-text">COMPRAR INGRESSO</span>
+            </button>
+          </div>
+        </div>
+        <div class="slide-container">
+          <img
+            src="./images/karate_kid_legends_poster.png"
+            class="slider"
+            alt="Karate Kid Legends poster movie"
+          />
+          <div class="rating-box-slide" data-rating="12">12</div>
+          <div class="slide-content">
+            <h2>KARATE KID: LEGENDS</h2>
+            <button class="buy-button">
+              <span class="btn-text">COMPRAR INGRESSO</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button id="next-button">
+        <img src="./images/arrow.png" alt="next-button" />
+      </button>
+    </div>
+    <div class="schedule-container">
+      <button id="movie-button">
+        <img src="./images/minecraft_movieposter.png" alt="Minecraft Poster" />
+        <div class="info">
+          <h3>UM FILME MINECRAFT</h3>
+          <h5>Aventura - 100m</h5>
+          <div class="rating-box" data-rating="10">10</div>
+        </div>
+      </button>
+      <button id="movie-button">
+        <img src="./images/the_chosen_movieposter.png" alt="Minecraft Poster" />
+        <div class="info">
+          <h3>THE CHOSEN: A ÚLTIMA CEIA</h3>
+          <h5>Drama - 100m</h5>
+          <div class="rating-box" data-rating="12">12</div>
+        </div>
+      </button>
+      <button id="movie-button">
+        <img
+          src="./images/operacao_vinganca_movieposter.png"
+          alt="Minecraft Poster"
+        />
+        <div class="info">
+          <h3>OPERAÇÃO VINGANÇA</h3>
+          <h5>Ação - 125m</h5>
+          <div class="rating-box" data-rating="14">14</div>
+        </div>
+      </button>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide-container");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("on", i === index);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      nextButton.addEventListener("click", nextSlide);
+      prevButton.addEventListener("click", prevSlide);
+
+      const ordersMenuIcon = document.getElementById("orders-menu");
+      const sideMenu = document.getElementById("side-menu");
+
+      ordersMenuIcon.addEventListener("click", () => {
+        sideMenu.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
