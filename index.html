@@ -10,29 +10,42 @@
     <link rel="stylesheet" href="style.css" />
     <title>CineMundo - Brasil</title>
   </head>
-  <body>
+  <body class="dark-theme">
     <header>
-      <img
-        id="orders-menu"
-        src="cinemundo/images/menu_icon_order_ticket.png"
-        alt="Abrir menu"
-        role="button"
-        aria-label="Abrir menu lateral"
-      />
-      <img src="cinemundo/images/cinemundo_logo.png" alt="CineMundo logo" />
+      <div class="header-left">
+        <img
+          id="orders-menu"
+          src="cinemundo/images/menu_icon_order_ticket.png"
+          alt="Abrir menu"
+          role="button"
+          aria-label="Abrir menu lateral"
+        />
+        <img
+          src="cinemundo/images/cinemundo_logo.png"
+          alt="CineMundo logo"
+          class="logo"
+        />
+      </div>
+
       <nav class="topnav">
         <a class="active" href="#">PROGRAMAÇÃO</a>
         <a href="#">CINEMAS</a>
         <a href="#">PROMOÇÕES</a>
         <a href="#">PREÇOS</a>
       </nav>
-      <div class="search-bar">
-        <img
-          src="cinemundo/images/search_icon.png"
-          id="search-button"
-          alt="Buscar"
-        />
-        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar filmes" />
+
+      <div class="header-right">
+        <div class="search-bar">
+          <img
+            src="cinemundo/images/search_icon.png"
+            id="search-button"
+            alt="Buscar"
+          />
+          <input type="text" placeholder="Pesquisar" aria-label="Pesquisar filmes" />
+        </div>
+        <button id="theme-toggle" aria-label="Alternar tema">
+          <i class="fa fa-moon-o" id="theme-icon"></i>
+        </button>
       </div>
     </header>
 
@@ -111,6 +124,7 @@
     </div>
 
     <script>
+      // ===== SLIDER =====
       const slides = document.querySelectorAll(".slide-container");
       const prevButton = document.getElementById("prev-button");
       const nextButton = document.getElementById("next-button");
@@ -135,6 +149,7 @@
       nextButton.addEventListener("click", nextSlide);
       prevButton.addEventListener("click", prevSlide);
 
+      // ===== MENU LATERAL =====
       const ordersMenuIcon = document.getElementById("orders-menu");
       const sideMenu = document.getElementById("side-menu");
 
@@ -151,6 +166,34 @@
           sideMenu.classList.remove("active");
         }
       });
+
+      // ===== TEMA CLARO/ESCURO =====
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeIcon = document.getElementById("theme-icon");
+      const body = document.body;
+
+      function setTheme(theme) {
+        body.classList.remove("dark-theme", "light-theme");
+        body.classList.add(theme);
+        if (theme === "light-theme") {
+          themeIcon.className = "fa fa-sun-o";
+          themeIcon.style.color = "#f1c40f";
+        } else {
+          themeIcon.className = "fa fa-moon-o";
+          themeIcon.style.color = "#f0f0f0";
+        }
+        localStorage.setItem("theme", theme);
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = body.classList.contains("dark-theme") ? "dark-theme" : "light-theme";
+        const newTheme = currentTheme === "dark-theme" ? "light-theme" : "dark-theme";
+        setTheme(newTheme);
+      });
+
+      // Carregar tema salvo
+      const savedTheme = localStorage.getItem("theme") || "dark-theme";
+      setTheme(savedTheme);
     </script>
   </body>
 </html>
