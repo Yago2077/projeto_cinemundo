@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,23 +12,30 @@
   </head>
   <body>
     <header>
-      <img id="orders-menu" src="cinemundo/images/menu_icon_order_ticket.png" />
-      <img src="cinemundo/images/cinemundo_logo.png" />
-      <div class="topnav">
+      <img
+        id="orders-menu"
+        src="cinemundo/images/menu_icon_order_ticket.png"
+        alt="Abrir menu"
+        role="button"
+        aria-label="Abrir menu lateral"
+      />
+      <img src="cinemundo/images/cinemundo_logo.png" alt="CineMundo logo" />
+      <nav class="topnav">
         <a class="active" href="#">PROGRAMAÇÃO</a>
         <a href="#">CINEMAS</a>
         <a href="#">PROMOÇÕES</a>
         <a href="#">PREÇOS</a>
-      </div>
+      </nav>
       <div class="search-bar">
         <img
           src="cinemundo/images/search_icon.png"
           id="search-button"
-          alt="search-button"
+          alt="Buscar"
         />
-        <input type="text" placeholder="Pesquisar" />
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar filmes" />
       </div>
     </header>
+
     <div id="side-menu">
       <ul>
         <li><a href="#">INGRESSOS</a></li>
@@ -36,16 +43,17 @@
         <li><a href="#">MINHA CONTA</a></li>
       </ul>
     </div>
+
     <div class="container-slider">
-      <button id="prev-button">
-        <img src="cinemundo/images/arrow.png" alt="prev-button" />
+      <button id="prev-button" aria-label="Slide anterior">
+        <img src="cinemundo/images/arrow.png" alt="Seta esquerda" />
       </button>
       <div class="container-images">
         <div class="slide-container on">
           <img
             src="cinemundo/images/thunderbolts_poster.png"
             class="slider"
-            alt="Thunderbolts poster movie"
+            alt="Thunderbolts poster"
           />
           <div class="rating-box-slide" data-rating="14">14</div>
           <div class="slide-content">
@@ -59,7 +67,7 @@
           <img
             src="cinemundo/images/karate_kid_legends_poster.png"
             class="slider"
-            alt="Karate Kid Legends poster movie"
+            alt="Karate Kid Legends poster"
           />
           <div class="rating-box-slide" data-rating="12">12</div>
           <div class="slide-content">
@@ -70,12 +78,13 @@
           </div>
         </div>
       </div>
-      <button id="next-button">
-        <img src="cinemundo/images/arrow.png" alt="next-button" />
+      <button id="next-button" aria-label="Próximo slide">
+        <img src="cinemundo/images/arrow.png" alt="Seta direita" />
       </button>
     </div>
+
     <div class="schedule-container">
-      <button id="movie-button">
+      <button class="movie-button">
         <img src="cinemundo/images/minecraft_movieposter.png" alt="Minecraft Poster" />
         <div class="info">
           <h3>UM FILME MINECRAFT</h3>
@@ -83,19 +92,16 @@
           <div class="rating-box" data-rating="10">10</div>
         </div>
       </button>
-      <button id="movie-button">
-        <img src="cinemundo/images/the_chosen_movieposter.png" alt="Minecraft Poster" />
+      <button class="movie-button">
+        <img src="cinemundo/images/the_chosen_movieposter.png" alt="The Chosen Poster" />
         <div class="info">
           <h3>THE CHOSEN: A ÚLTIMA CEIA</h3>
           <h5>Drama - 100m</h5>
           <div class="rating-box" data-rating="12">12</div>
         </div>
       </button>
-      <button id="movie-button">
-        <img
-          src="cinemundo/images/operacao_vinganca_movieposter.png"
-          alt="Minecraft Poster"
-        />
+      <button class="movie-button">
+        <img src="cinemundo/images/operacao_vinganca_movieposter.png" alt="Operação Vingança Poster" />
         <div class="info">
           <h3>OPERAÇÃO VINGANÇA</h3>
           <h5>Ação - 125m</h5>
@@ -132,8 +138,18 @@
       const ordersMenuIcon = document.getElementById("orders-menu");
       const sideMenu = document.getElementById("side-menu");
 
-      ordersMenuIcon.addEventListener("click", () => {
+      function toggleMenu() {
         sideMenu.classList.toggle("active");
+      }
+
+      ordersMenuIcon.addEventListener("click", toggleMenu);
+
+      document.addEventListener("click", function (event) {
+        const isClickInsideMenu = sideMenu.contains(event.target);
+        const isClickOnMenuIcon = ordersMenuIcon.contains(event.target);
+        if (!isClickInsideMenu && !isClickOnMenuIcon && sideMenu.classList.contains("active")) {
+          sideMenu.classList.remove("active");
+        }
       });
     </script>
   </body>
