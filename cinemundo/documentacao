@@ -1,0 +1,153 @@
+================================================================================
+                       DOCUMENTAÇÃO DO PROJETO CINEMUNDO
+================================================================================
+
+1. VISÃO GERAL
+-------------------------------------------------------------------------------
+O CineMundo é um site institucional para um cinema, desenvolvido como projeto
+para aprendizado e publicação no GitHub Pages. O site apresenta um layout
+moderno com destaque para filmes em cartaz, um carrossel promocional, navegação
+principal, menu lateral e uma grade de filmes com suas respectivas classificações
+etárias.
+
+O projeto foi construído com HTML5, CSS3 e JavaScript puro, sem dependências
+externas (exceto a biblioteca Font Awesome para ícones, usada de forma opcional).
+É totalmente responsivo e adapta-se a dispositivos móveis, tablets e desktops.
+
+
+2. ESTRUTURA DE DIRETÓRIOS
+-------------------------------------------------------------------------------
+A hierarquia do repositório é a seguinte:
+
+projeto_cinemundo/
+├── cinemundo/
+│   ├── fonts/
+│   │   └── Oswald-VariableFont_wght.ttf
+│   └── images/
+│       ├── menu_icon_order_ticket.png
+│       ├── cinemundo_logo.png
+│       ├── search_icon.png
+│       ├── arrow.png
+│       ├── thunderbolts_poster.png
+│       ├── karate_kid_legends_poster.png
+│       ├── minecraft_movieposter.png
+│       ├── the_chosen_movieposter.png
+│       └── operacao_vinganca_movieposter.png
+├── index.html
+└── style.css
+
+- cinemundo/          – pasta que contém todos os recursos estáticos (fontes e imagens).
+- fonts/              – arquivo de fonte variável Oswald (usada para títulos e textos).
+- images/             – todas as imagens do projeto (logo, ícones, pôsteres, setas).
+- index.html          – página principal do site.
+- style.css           – folha de estilos com toda a aparência e responsividade.
+
+
+3. TECNOLOGIAS UTILIZADAS
+-------------------------------------------------------------------------------
+- HTML5               – estrutura semântica do conteúdo.
+- CSS3                – estilização, layout com Flexbox, animações, transições e media queries.
+- JavaScript (ES6)    – interatividade: carrossel, menu lateral, fechamento ao clicar fora.
+- Font Awesome (CDN)  – recurso adicional para ícones (não obrigatório).
+- Fonte Oswald        – carregada localmente a partir da pasta fonts.
+
+
+4. FUNCIONALIDADES
+-------------------------------------------------------------------------------
+4.1. Cabeçalho
+      - Logotipo do CineMundo.
+      - Menu de navegação principal com links para: Programação, Cinemas, Promoções e Preços.
+      - Barra de pesquisa com ícone de lupa e campo de texto (funcionalidade visual).
+      - Ícone de menu hambúrguer (à esquerda) que abre um menu lateral.
+
+4.2. Carrossel (Slider) Principal
+      - Exibe dois pôsteres de filmes em destaque: THUNDERBOLTS e KARATE KID: LEGENDS.
+      - Cada slide contém:
+          * Imagem de fundo (pôster).
+          * Classificação etária (badge colorido).
+          * Título do filme.
+          * Botão "COMPRAR INGRESSO" com efeito hover.
+      - Navegação por setas (esquerda/direita) com transição suave.
+
+4.3. Grade de Filmes em Cartaz
+      - Três filmes adicionais: UM FILME MINECRAFT, THE CHOSEN: A ÚLTIMA CEIA e OPERAÇÃO VINGANÇA.
+      - Cada item é um botão clicável.
+      - Exibe pôster, título, gênero/duração e classificação etária.
+      - Efeito de escala ao passar o mouse e mudança de cor de fundo.
+
+4.4. Menu Lateral
+      - Aparece ao clicar no ícone de menu hambúrguer.
+      - Lista de links: INGRESSOS, CLUB CINEMUNDO, MINHA CONTA.
+      - Fecha automaticamente ao clicar fora do menu ou no ícone novamente.
+
+4.5. Responsividade
+      - Tablets (≤ 768px): cabeçalho reorganizado, tamanhos reduzidos.
+      - Celulares (≤ 480px): navegação compacta, menu lateral mais estreito.
+
+
+5. COMO EXECUTAR LOCALMENTE
+-------------------------------------------------------------------------------
+1. Clone o repositório ou baixe os arquivos.
+2. Certifique-se de que a estrutura de pastas esteja exatamente como descrita acima.
+3. Abra o arquivo index.html diretamente no navegador (não é necessário servidor).
+4. Utilize um navegador moderno (Chrome, Firefox, Edge, etc.).
+
+
+6. PUBLICAÇÃO NO GITHUB PAGES
+-------------------------------------------------------------------------------
+1. Crie um repositório público no GitHub (ex.: projeto_cinemundo).
+2. Envie todos os arquivos e pastas para a branch principal (ex.: main).
+3. Acesse Settings → Pages no repositório.
+4. Em "Branch", selecione main e mantenha a pasta raiz (/).
+5. Salve e aguarde alguns minutos. O site estará disponível em:
+   https://<seu-usuario>.github.io/projeto_cinemundo/
+
+Importante: os caminhos das imagens são relativos (cinemundo/images/...). Como a
+raiz do site é o repositório, esses caminhos funcionarão perfeitamente, desde que
+os nomes dos arquivos estejam escritos exatamente como no código (case-sensitive).
+
+
+7. OBSERVAÇÕES SOBRE CARREGAMENTO DE IMAGENS
+-------------------------------------------------------------------------------
+Se as imagens não aparecerem no GitHub Pages, verifique:
+
+- Nomes dos arquivos: todos os nomes no código estão em minúsculas e sem acentos.
+  Certifique-se de que os arquivos no repositório tenham exatamente os mesmos nomes.
+- Estrutura de pastas: a pasta cinemundo deve estar na raiz do repositório.
+- Commit e push: confirme se as imagens foram adicionadas e enviadas.
+- Cache do navegador: limpe o cache ou teste em modo anônimo.
+- Erros 404: use as ferramentas do desenvolvedor (F12) na aba "Rede".
+
+
+8. MELHORIAS IMPLEMENTADAS (EM RELAÇÃO À VERSÃO ORIGINAL)
+-------------------------------------------------------------------------------
+- Substituição de IDs duplicados por classes (.movie-button em vez de #movie-button).
+- Maior responsividade com flex-wrap, clamp() e media queries detalhadas.
+- Acessibilidade: adição de aria-label, role e alt descritivos.
+- Menu lateral fecha ao clicar fora dele (melhoria de UX).
+- Posicionamentos mais flexíveis, removendo top negativo e valores fixos excessivos.
+- CSS unificado para as classificações etárias (redução de repetição).
+- Uso de aspect-ratio para manter proporção do slider.
+
+
+9. POSSÍVEIS PRÓXIMOS PASSOS
+-------------------------------------------------------------------------------
+- Implementar links funcionais para as páginas de programação, cinemas, promoções e preços.
+- Adicionar uma página de compra de ingressos com seleção de horários e poltronas.
+- Integrar uma API real de filmes para dados dinâmicos.
+- Criar um sistema de busca funcional.
+- Adicionar mais slides ao carrossel.
+- Incluir um rodapé com informações de contato e redes sociais.
+
+
+10. CONSIDERAÇÕES FINAIS
+-------------------------------------------------------------------------------
+O CineMundo é um projeto estático, mas com uma base sólida para evolução. O código
+é limpo, bem estruturado e segue boas práticas de front-end. Esta documentação
+serve como guia para entendimento, manutenção e expansão do sistema.
+
+Para dúvidas ou sugestões, entre em contato com o desenvolvedor.
+
+================================================================================
+© 2026 CineMundo - Todos os direitos reservados.
+================================================================================
